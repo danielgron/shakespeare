@@ -34,6 +34,11 @@ public class Shakespeare {
             // Selection
             
             // Insertion
+            InsertionSort is = new InsertionSort(array);
+            String[] res = is.sort();
+            for (int i = 0; i < 10; i++) {
+                System.out.println(res[i]);
+            }
             // Merge
         } catch (IOException ex) {
             Logger.getLogger(Shakespeare.class.getName()).log(Level.SEVERE, null, ex);
