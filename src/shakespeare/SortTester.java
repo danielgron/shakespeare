@@ -11,7 +11,7 @@ package shakespeare;
  */
 public class SortTester {
     public static void main(String[] args) {
-        String[] testArray = {"cow","tiger","panda","bison","goat","emu","cat","dog","anaconda"};
+        String[] testArray = {"cow","tiger","panda","cow","bison","goat","cow","emu","cow","cat","dog","anaconda"};
         String[] testResult = SelectionSort.selectionSortWithPrint(testArray);
         for (String string : testResult) {
             System.out.println(string);
