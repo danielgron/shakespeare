@@ -26,21 +26,26 @@ public class Shakespeare {
         // Read text file to array
         try {
             String[] array = FileUtility.toStringArray("shakespeare-complete-works.txt", "[^A-Za-z]");
-            String[] partialShakespeare = getPartialArray(array,1000);
+            String[] partialShakespeare = getPartialArray(array,100000);
             // Selection
-            
+            Stopwatch selTimer = new Stopwatch();
             String[] selectionSorted = SelectionSort.selectionSort(partialShakespeare);
-            for (String string : selectionSorted) {
-                System.out.println(string);
-            }
+            System.out.println("Selection Sort TIME:" + selTimer.elapsedTime()+"s");
+//            for (String string : selectionSorted) {
+//                System.out.println(string);
+//            }
             // Insertion
-            InsertionSort is = new InsertionSort(array);
-            String[] res = is.sort();
-            for (int i = 0; i < 10; i++) {
+            Stopwatch insTimer = new Stopwatch();
+            String[] res = InsertionSort.insertionSort(partialShakespeare);
+            System.out.println("Insertion Sort TIME:" + insTimer.elapsedTime()+"s");
+            for (int i = 0; i < res.length; i++) {
                 System.out.println(res[i]);
             }
             
             // Merge
+            Stopwatch merTimer = new Stopwatch();
+            
+            System.out.println("Merge Sort TIME:" + merTimer.elapsedTime()+"s");
         } catch (IOException ex) {
             Logger.getLogger(Shakespeare.class.getName()).log(Level.SEVERE, null, ex);
         }

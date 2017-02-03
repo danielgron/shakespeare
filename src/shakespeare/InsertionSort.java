@@ -10,17 +10,8 @@ package shakespeare;
  * @author Cherry Rose Semeña
  */
 public class InsertionSort {
-    String[] data;
 
-    public InsertionSort(String[] arr) {
-        this.data = arr;
-    }
-
-    public String[] getData() {
-        return data;
-    }
-    
-    public String[] sort(){
+    public static String[] insertionSort(String[] data){
         int j;
         int i;
         String temp;
