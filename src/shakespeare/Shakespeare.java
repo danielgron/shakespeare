@@ -6,10 +6,7 @@
 package shakespeare;
 
 import dk.cphbusiness.shakespeare.FileUtility;
-import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
-import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -26,7 +23,7 @@ public class Shakespeare {
         // Read text file to array
         try {
             String[] array = FileUtility.toStringArray("shakespeare-complete-works.txt", "[^A-Za-z]");
-            String[] partialShakespeare = getPartialArray(array,100);
+            String[] partialShakespeare = getPartialArray(array,100000);
             // Selection
             Stopwatch selTimer = new Stopwatch();
             String[] selectionSorted = SelectionSort.selectionSort(partialShakespeare);
@@ -44,9 +41,14 @@ public class Shakespeare {
             
             // Merge
             Stopwatch merTimer = new Stopwatch();
-            String[] merSorted = MergeSort.mergeSort(partialShakespeare);
-            System.out.println("Merge Sort TIME:" + merTimer.elapsedTime()+"s");
-            for (String str : merSorted) {
+            String[] merSorted = MergeSortBU.sort(partialShakespeare);
+            System.out.println("Merge Sort Bottom-up TIME:" + merTimer.elapsedTime()+"s");
+            
+            Stopwatch mer2Timer = new Stopwatch();
+            String[] mer2Sorted = MergeSortTD.sort(partialShakespeare);
+            System.out.println("Merge Sort Top-Down TIME:" + mer2Timer.elapsedTime()+"s");
+            
+            for (String str : mer2Sorted) {
                 System.out.println(str);
             }
         } catch (IOException ex) {
@@ -59,6 +61,21 @@ public class Shakespeare {
             toReturn[i]=array[i];
         }
         return toReturn;
+    }
+    
+    //just a helper method if already sorted
+    public static boolean isSorted(int limit, String[] words) {
+        if (limit <= 0 || words.length < limit) {
+            limit = words.length;
+        }
+        String temp = words[0];
+        for (int i = 1; i < limit; i++) {
+            if (temp.compareTo(words[i]) > 0) {
+                return false;
+            }
+            temp = words[i];
+        }
+        return true;
     }
     
 }
