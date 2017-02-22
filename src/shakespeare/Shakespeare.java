@@ -5,6 +5,10 @@
  */
 package shakespeare;
 
+import shakespeare.sort.SelectionSort;
+import shakespeare.sort.MergeSortBU;
+import shakespeare.sort.MergeSortTD;
+import shakespeare.sort.InsertionSort;
 import dk.cphbusiness.shakespeare.FileUtility;
 import java.io.IOException;
 import java.util.logging.Level;

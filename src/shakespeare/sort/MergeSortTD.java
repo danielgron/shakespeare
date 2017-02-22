@@ -1,13 +1,31 @@
-package shakespeare;
+
+package shakespeare.sort;
 
 /**
- * BOTTOM-UP MERGE SORT IMPLEMENTATION
+ * TOP DOWN MERGE SORT IMPLEMENTATION
  * @author Cherry Rose Semeña
  */
-public class MergeSortBU {
+public class MergeSortTD {
 
-    
     private static String[] aux;
+
+    // auxiliary array for merges 
+    public static String[] sort(String[] data) {
+        aux = new String[data.length];   // Allocate space just once.   
+        sort(data, 0, data.length - 1);
+        return data;
+    }
+
+    private static void sort(String[] data, int lo, int hi) {  
+    // Sort a[lo..hi].   
+        if (hi <= lo) {
+            return;
+        }
+        int mid = lo + (hi - lo) / 2;
+        sort(data, lo, mid); // Sort left half.    
+        sort(data, mid + 1, hi); // Sort right half.   
+        merge(data, lo, mid, hi);
+    }
     
     public static void merge(String[] data, int lo, int mid, int hi) {
     // Merge a[lo..mid] with a[mid+1..hi].  
@@ -29,21 +47,5 @@ public class MergeSortBU {
             }
         }
     }
-  
- 
-// auxiliary array for merges    
-public static String[] sort(String[] data)   { 
-    // Do lg N passes of pairwise merges.  
-    int N = data.length;   
-    aux = new String[N];   
-    for (int sz = 1; sz < N; sz = sz+sz)   
-        // sz: subarray size        
-        for (int lo = 0; lo < N-sz; lo += sz+sz)
-            // lo: subarray index 
-            merge((String[]) data, lo, lo+sz-1, Math.min(lo+sz+sz-1, N-1));  
-    return data;
-}
-
-
 
 }

@@ -5,6 +5,8 @@
  */
 package shakespeare;
 
+import shakespeare.sort.SelectionSort;
+
 /**
  *
  * @author danie
