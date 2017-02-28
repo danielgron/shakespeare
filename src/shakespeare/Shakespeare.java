@@ -52,9 +52,9 @@ public class Shakespeare {
             String[] mer2Sorted = MergeSortTD.sort(partialShakespeare);
             System.out.println("Merge Sort Top-Down TIME:" + mer2Timer.elapsedTime()+"s");
             
-            for (String str : mer2Sorted) {
-                System.out.println(str);
-            }
+//            for (String str : mer2Sorted) {
+//                System.out.println(str);
+//            }
         } catch (IOException ex) {
             Logger.getLogger(Shakespeare.class.getName()).log(Level.SEVERE, null, ex);
         }
