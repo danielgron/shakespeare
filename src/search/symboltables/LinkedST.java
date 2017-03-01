@@ -5,7 +5,7 @@ package search.symboltables;
  *
  * @author Cherry Rose Semeña
  */
-public class LinkedSymbolTable<K, V>{
+public class LinkedST<K, V>{
 
     private Node first;
 

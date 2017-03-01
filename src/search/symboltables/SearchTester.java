@@ -16,8 +16,8 @@ public class SearchTester {
             String[] partialShakespeare = getPartialArray(array, 100000);
             String[] sortedShakespeare = MergeSortTD.sort(partialShakespeare);
 //            doLinkedST(sortedShakespeare);
-            doArrayST(sortedShakespeare);
-            
+//            doArrayST(sortedShakespeare);
+            doHashST(sortedShakespeare);
         } catch (Exception ex) {
             System.out.println("ERROR:" + ex.getMessage());
         }
@@ -26,7 +26,7 @@ public class SearchTester {
     
     public static void doLinkedST(String[] partialShakespeare) {
         
-        LinkedSymbolTable<String, Integer> lst = new LinkedSymbolTable<>();
+        LinkedST<String, Integer> lst = new LinkedST<>();
         for (String word : partialShakespeare) {
             if (!lst.contains(word)) {
                 lst.put(word, 1);
@@ -36,6 +36,20 @@ public class SearchTester {
         }
         
         lst.print();
+    }
+    
+    public static void doHashST(String[] partialShakespeare) {
+        
+        HashST<String, Integer> hst = new HashST<>();
+        for (String word : partialShakespeare) {
+            if (!hst.contains(word)) {
+                hst.put(word, 1);
+            } else {
+                hst.put(word, hst.get(word) + 1);
+            }
+        }
+        
+        hst.print();
     }
     
     public static void doArrayST(String[] partialShakespeare){
