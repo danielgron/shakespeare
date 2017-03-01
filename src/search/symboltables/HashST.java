@@ -1,14 +1,11 @@
 
 package search.symboltables;
 
-import shakespeare.sort.MergeSortBU;
-
 /**
  *
  * @author Cherry Rose Semeña
  */
 public class HashST <K,V> {
-//     private int kvPairs;
     private int size;
     private LinkedST<K, V>[] st;
     
