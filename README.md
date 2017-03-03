@@ -28,8 +28,12 @@ After testing these algorithms with 100.000 words from Shakespeare a couple of t
 Output:
 
 Linked Symbol Table: 0.397
+
 Array Symbol Table: 5.405
+
 Balanced Tree Symbol Table: 0.036
+
 Hash Symbol Table: 0.018
+
 
 -Cherry Rose Semeña & Daniel Grønbjerg
