@@ -1,7 +1,6 @@
 package search.symboltables;
 
 import dk.cphbusiness.shakespeare.FileUtility;
-import java.io.IOException;
 import shakespeare.sort.MergeSortTD;
 
 /**
@@ -17,7 +16,8 @@ public class SearchTester {
             String[] sortedShakespeare = MergeSortTD.sort(partialShakespeare);
 //            doLinkedST(sortedShakespeare);
 //            doArrayST(sortedShakespeare);
-            doHashST(sortedShakespeare);
+            doBalancedTreeST(sortedShakespeare);
+//            doHashST(sortedShakespeare);
         } catch (Exception ex) {
             System.out.println("ERROR:" + ex.getMessage());
         }
@@ -71,5 +71,20 @@ public class SearchTester {
             toReturn[i] = array[i];
         }
         return toReturn;
+    }
+
+    private static void doBalancedTreeST(String[] partialShakespeare) {
+         BalancedTreeST<String, Integer> bst = new BalancedTreeST<>();
+        for (String word : partialShakespeare) {
+            if (!bst.contains(word)) {
+                bst.put(word, 1);
+            } else {
+                bst.put(word, bst.get(word) + 1);
+            }
+        }
+        
+        for (String str : bst.keys()) {
+            System.out.println(str + " : " + bst.get(str));
+        }
     }
 }
