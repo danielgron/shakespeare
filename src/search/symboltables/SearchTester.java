@@ -1,6 +1,7 @@
 package search.symboltables;
 
 import dk.cphbusiness.shakespeare.FileUtility;
+import shakespeare.Stopwatch;
 import shakespeare.sort.MergeSortTD;
 
 /**
@@ -10,14 +11,28 @@ import shakespeare.sort.MergeSortTD;
 public class SearchTester {
 
     public static void main(String[] args) {
+        
         try {
             String[] array = FileUtility.toStringArray("shakespeare-complete-works.txt", "[^A-Za-z]");
             String[] partialShakespeare = getPartialArray(array, 100000);
             String[] sortedShakespeare = MergeSortTD.sort(partialShakespeare);
-//            doLinkedST(sortedShakespeare);
-//            doArrayST(sortedShakespeare);
+            
+            Stopwatch lTimer = new Stopwatch();
+            doLinkedST(sortedShakespeare);
+            System.out.println("Linked Symbol Table: " + lTimer.elapsedTime());
+            
+            Stopwatch aTimer = new Stopwatch();
+            doArrayST(sortedShakespeare);
+            System.out.println("Array Symbol Table: " +  aTimer.elapsedTime());
+            
+            Stopwatch bTimer = new Stopwatch();
             doBalancedTreeST(sortedShakespeare);
-//            doHashST(sortedShakespeare);
+            System.out.println("Balanced Tree Symbol Table: " + bTimer.elapsedTime());
+            
+            Stopwatch hTimer = new Stopwatch();
+            doHashST(sortedShakespeare);
+            System.out.println("Hash Symbol Table: " + hTimer.elapsedTime());
+            
         } catch (Exception ex) {
             System.out.println("ERROR:" + ex.getMessage());
         }
@@ -35,7 +50,7 @@ public class SearchTester {
             }
         }
         
-        lst.print();
+//        lst.print();
     }
     
     public static void doHashST(String[] partialShakespeare) {
@@ -49,7 +64,7 @@ public class SearchTester {
             }
         }
         
-        hst.print();
+//        hst.print();
     }
     
     public static void doArrayST(String[] partialShakespeare){
@@ -62,7 +77,7 @@ public class SearchTester {
             }
         }
         
-        ast.print();
+//        ast.print();
     }
     
     public static String[] getPartialArray(String[] array, int size) {
@@ -82,9 +97,9 @@ public class SearchTester {
                 bst.put(word, bst.get(word) + 1);
             }
         }
-        
-        for (String str : bst.keys()) {
-            System.out.println(str + " : " + bst.get(str));
-        }
+        //print
+//        for (String str : bst.keys()) {
+//            System.out.println(str + " : " + bst.get(str));
+//        }
     }
 }
